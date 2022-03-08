@@ -1,0 +1,127 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": true,
+    "commonjs": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "no-alert": 1,
+    "import/named": 0,
+    "import/newline-after-import": 0,
+    "import/prefer-default-export": "off",
+    "@next/next/no-img-element": 0,
+    "react/display-name": 0,
+    "react/function-component-definition": 0,
+    "react/self-closing-comp": 0,
+    "react/jsx-props-no-spreading": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "curly": ["error", "all"],
+    "react/button-has-type": 0,
+    "default-param-last": "off",
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "import/no-import-module-exports": 0,
+    "react/no-array-index-key": 0,
+    "camelcase": "off",
+    "arrow-body-style": 0,
+    "no-continue": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/naming-convention": 0,
+    "@typescript-eslint/default-param-last": 0,
+    "max-classes-per-file": 0,
+    "no-underscore-dangle": 0,
+    "react/require-default-props": 0,
+    "consistent-return": 0,
+    "no-restricted-syntax": 0,
+    "no-param-reassign": 0,
+    "import/no-cycle": 0,
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ],
+    "eqeqeq": [
+      "error",
+      "always"
+    ],
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    "key-spacing": [
+      2,
+      {
+        "singleLine": {
+          "beforeColon": false,
+          "afterColon": true
+        }
+      }
+    ],
+    "multiline-ternary": "off",
+    "no-cond-assign": [
+      "error",
+      "always"
+    ],
+    "no-console": "off",
+    "no-multi-spaces": "error",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0,
+        "maxBOF": 0
+      }
+    ],
+    "no-return-await": "error",
+    "no-trailing-spaces": "error",
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "none",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "node/no-callback-literal": "off",
+    "padded-blocks": [
+      "error",
+      "never"
+    ],
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": false
+      }
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ]
+  }
+}
