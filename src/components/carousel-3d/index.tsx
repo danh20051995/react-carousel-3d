@@ -30,29 +30,29 @@ export interface Carousel3dProps {
   animationSpeed?: number
   bias?: EBias
   dir?: EDir
-  border?: number
+  loop?: boolean
   clickable?: boolean
+  disable3d?: boolean
+  oneDirectional?: boolean
   controlsHeight?: number
   controlsNextHtml?: string
   controlsPrevHtml?: string
   controlsVisible?: boolean
   controlsWidth?: number
   count?: number | string
-  disable3d?: boolean
   display?: number
+  space?: number | string
+  border?: number
+  width?: number
   height?: number
+  startIndex?: number
+  perspective?: number
   inverseScaling?: number
-  loop?: boolean
   minSwipeDistance?: number
-  oneDirectional?: boolean
   onLastSlide?: (index: number) => any
   onMainSlideClick?: (event: RMouseEvent<Element, MouseEvent>, index: number) => any
   onBeforeSlideChange?: (index: number) => any
   onSlideChange?: (index: number) => any
-  perspective?: number
-  space?: number | string
-  startIndex?: number
-  width?: number
 }
 
 export const Carousel3d: FC<Carousel3dProps> = ({

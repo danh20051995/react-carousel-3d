@@ -1,17 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Carousel3d } from '@/components/carousel-3d'
 
 import './App.scss'
 
 const App = () => {
-  const [loop, setLoop] = useState(true)
-  const [disable3d, setDisable3d] = useState(false)
-  const [autoplay, setAutoplay] = useState(true)
-  const [autoplayHoverPause, setAutoplayHoverPause] = useState(true)
-  const [controlsVisible, setControlsVisible] = useState(true)
-  const [oneDirectional, setOneDirectional] = useState(false)
-  const [clickable, setClickable] = useState(true)
-
   const items = [
     'https://img.favpng.com/10/6/13/number-0-computer-icons-blue-clip-art-png-favpng-Q69GyATD54wpx0Jdfw67Rrjyi_t.jpg',
     'https://media.baamboozle.com/uploads/images/140571/1602219863_6002',
@@ -24,6 +16,15 @@ const App = () => {
     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Eo_circle_pink_white_number-8.svg/1200px-Eo_circle_pink_white_number-8.svg.png',
     'https://www.pngitem.com/pimgs/m/423-4233905_blue-number-9-clipart-number-9-blue-color.png'
   ]
+
+  const [loop, setLoop] = useState(true)
+  const [disable3d, setDisable3d] = useState(false)
+  const [autoplay, setAutoplay] = useState(true)
+  const [autoplayHoverPause, setAutoplayHoverPause] = useState(true)
+  const [controlsVisible, setControlsVisible] = useState(true)
+  const [oneDirectional, setOneDirectional] = useState(false)
+  const [clickable, setClickable] = useState(true)
+  const [display, setDisplay] = useState(items.length)
 
   return (
     <div className="App">
@@ -54,9 +55,9 @@ const App = () => {
         onSlideChange={(index) => console.log('onSlideChange', index)}
         onMainSlideClick={(e, index) => console.log('onMainSlideClick', e, index)}
         startIndex={Math.floor(items.length / 2)}
-        display={items.length}
+        display={display}
         items={items.map(item => (
-          <img src={item} alt="temp"/>
+          <img src={item} alt="temp" />
         ))}
       />
 
@@ -72,6 +73,7 @@ const App = () => {
           <label htmlFor="loop">loop</label>
         </div>
 
+        <br />
         <div>
           <input
             type="checkbox"
@@ -83,6 +85,7 @@ const App = () => {
           <label htmlFor="disable3d">disable3d</label>
         </div>
 
+        <br />
         <div>
           <input
             type="checkbox"
@@ -94,6 +97,7 @@ const App = () => {
           <label htmlFor="autoplay">autoplay</label>
         </div>
 
+        <br />
         <div>
           <input
             type="checkbox"
@@ -105,6 +109,7 @@ const App = () => {
           <label htmlFor="autoplayHoverPause">autoplayHoverPause</label>
         </div>
 
+        <br />
         <div>
           <input
             type="checkbox"
@@ -116,6 +121,7 @@ const App = () => {
           <label htmlFor="controlsVisible">controlsVisible</label>
         </div>
 
+        <br />
         <div>
           <input
             type="checkbox"
@@ -127,6 +133,7 @@ const App = () => {
           <label htmlFor="oneDirectional">oneDirectional</label>
         </div>
 
+        <br />
         <div>
           <input
             type="checkbox"
@@ -136,6 +143,18 @@ const App = () => {
             onChange={() => setClickable(!clickable)}
           />
           <label htmlFor="clickable">clickable</label>
+        </div>
+
+        <br />
+        <div>
+          <label htmlFor="display">display: </label>
+          <input
+            type="number"
+            name="display"
+            id="display"
+            value={Number(display) ? Math.max(Math.min(Number(display), items.length), 0) : 0}
+            onChange={(e) => setDisplay(parseInt(e.target.value))}
+          />
         </div>
       </div>
     </div>
