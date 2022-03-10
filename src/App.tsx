@@ -14,8 +14,8 @@ const App = () => {
     '/static/images/6.png',
     '/static/images/7.png',
     '/static/images/8.png',
-    '/static/images/9.png',
-    '/static/images/10.png'
+    '/static/images/9.png'
+    // '/static/images/10.png'
   ])
 
   const [loop, setLoop] = useState(true)
@@ -31,21 +31,6 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-
       <Carousel3d
         autoplay={autoplay}
         autoplayTimeout={Math.max(autoplayTimeout, 1) * 500}

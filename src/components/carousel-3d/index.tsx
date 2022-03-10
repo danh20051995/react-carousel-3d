@@ -54,39 +54,38 @@ export interface Carousel3dProps {
   onSlideChange?: (index: number) => any
 }
 
-export const Carousel3d: FC<Carousel3dProps> = ({
-  autoplay = false,
-  autoplayTimeout = 2000,
-  autoplayHoverPause = true,
+export const Carousel3d: FC<Carousel3dProps> = (props) => {
+  const {
+    autoplay = false,
+    autoplayTimeout = 2000,
+    autoplayHoverPause = true,
 
-  animationSpeed = 500,
-  bias = 'left',
-  border = 1,
-  clickable = true,
-  controlsHeight = 50,
-  controlsNextHtml = '&rsaquo;',
-  controlsPrevHtml = '&lsaquo;',
-  controlsVisible = false,
-  controlsWidth = 50,
-  reverse = false,
-  disable3d = false,
-  display = 5,
-  height = 270,
-  inverseScaling = 300,
-  loop = false,
-  minSwipeDistance = 10,
-  oneDirectional = false,
-  onLastSlide = () => {},
-  onMainSlideClick = () => {},
-  onBeforeSlideChange = () => {},
-  onSlideChange = () => {},
-  perspective = 35,
-  space = 'auto',
-  startIndex = 0,
-  width = 360,
-  ...props
-}) => {
+    animationSpeed = 500,
+    bias = 'left',
+    border = 1,
+    clickable = true,
+    controlsHeight = 50,
+    controlsNextHtml = '&rsaquo;',
+    controlsPrevHtml = '&lsaquo;',
+    controlsVisible = false,
+    controlsWidth = 50,
+    reverse = false,
+    disable3d = false,
+    display = 5,
+    height = 270,
+    inverseScaling = 300,
+    loop = false,
+    minSwipeDistance = 10,
+    oneDirectional = false,
+    perspective = 35,
+    space = 'auto',
+    startIndex = 0,
+    width = 360
+    // ..._props
+  } = props
+
   const ref = useRef<HTMLDivElement>(null)
+  const autoplayTimeOutRef = useRef<NodeJS.Timer>()
   const [viewport, setViewport] = useState(0)
   const [walkStep, setWalkStep] = useState(0)
   const [state, setState] = useState({
@@ -243,16 +242,16 @@ export const Carousel3d: FC<Carousel3dProps> = ({
     )
 
     if (isLastSlide) {
-      onLastSlide(state.currentIndex)
+      props.onLastSlide && props.onLastSlide(state.currentIndex)
     }
 
-    onBeforeSlideChange(toIndex)
+    props.onBeforeSlideChange && props.onBeforeSlideChange(toIndex)
 
     setState(prev => ({
       ...prev,
       currentIndex: toIndex
     }))
-  }, [state.total, state.currentIndex, isLastSlide, onLastSlide, onBeforeSlideChange])
+  }, [state.total, state.currentIndex, isLastSlide, props])
 
   /**
    * Go to previous slide
@@ -305,7 +304,7 @@ export const Carousel3d: FC<Carousel3dProps> = ({
     }
 
     return setWalkStep(() => 1 + rightIndices.indexOf(index))
-  }, [state.currentIndex, loop, leftIndices, rightIndices])
+  }, [state.currentIndex, reverse, loop, leftIndices, rightIndices])
 
   /**
    * Watch walkStep effect
@@ -357,7 +356,7 @@ export const Carousel3d: FC<Carousel3dProps> = ({
    * Trigger event after slide change
    */
   useDidMountEffect(() => {
-    onSlideChange(state.currentIndex)
+    props.onSlideChange && props.onSlideChange(state.currentIndex)
   }, [state.currentIndex])
 
   /**
@@ -510,19 +509,20 @@ export const Carousel3d: FC<Carousel3dProps> = ({
       return
     }
 
-    let autoplayInterval: NodeJS.Timer
-
     const startAutoplay = () => {
-      autoplayInterval = setInterval(
+      if (autoplayTimeOutRef.current) {
+        clearTimeout(autoplayTimeOutRef.current)
+      }
+      autoplayTimeOutRef.current = setTimeout(
         () => goNext(),
-        // () => reverse ? goPrev() : goNext(),
         autoplayTimeout
       )
     }
 
     const pauseAutoplay = () => {
-      if (autoplay && autoplayInterval) {
-        clearTimeout(autoplayInterval)
+      if (autoplay && autoplayTimeOutRef.current) {
+        clearTimeout(autoplayTimeOutRef.current)
+        autoplayTimeOutRef.current = undefined
       }
     }
 
@@ -540,7 +540,7 @@ export const Carousel3d: FC<Carousel3dProps> = ({
         ref.current.removeEventListener('mouseleave', startAutoplay)
       }
     }
-  }, [autoplay, autoplayHoverPause, autoplayTimeout, goNext, isNextPossible])
+  }, [autoplay, autoplayHoverPause, autoplayTimeout, isNextPossible, goNext])
 
   const slideProps: SlideProps = {
     total: state.total,
@@ -562,7 +562,7 @@ export const Carousel3d: FC<Carousel3dProps> = ({
     space,
     width,
     goTo: animateToSlide,
-    onMainSlideClick
+    onMainSlideClick: props.onMainSlideClick
   }
 
   return (

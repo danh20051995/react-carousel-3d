@@ -30,44 +30,41 @@ export interface SlideProps {
   onMainSlideClick?: (event: RMouseEvent<Element, MouseEvent>, index: number) => any
 }
 
-export const Slide: FC<SlideProps> = ({
-  index = 0,
-  currentIndex = 0,
-  total = 0,
-  isActive = false,
-  clickable = true,
-  animationSpeed = 500,
-  disable3d = false,
-  hasHiddenSlides = false,
-  inverseScaling = 300,
-  leftOutIndex = 0,
-  leftIndices = [],
-  rightOutIndex = 0,
-  rightIndices = [],
-  oneDirectional = false,
-  perspective = 35,
-  space = 'auto',
-  slideHeight = 1,
-  slideWidth = 1,
-  border = 1,
-  width = 360,
-  goTo = () => {},
-  onMainSlideClick = () => {},
-  ...props
-}) => {
+export const Slide: FC<SlideProps> = (props) => {
   const [zIndex] = useState(999)
+  const {
+    index = 0,
+    currentIndex = 0,
+    total = 0,
+    isActive = false,
+    clickable = true,
+    animationSpeed = 500,
+    disable3d = false,
+    hasHiddenSlides = false,
+    inverseScaling = 300,
+    leftOutIndex = 0,
+    leftIndices = [],
+    rightOutIndex = 0,
+    rightIndices = [],
+    oneDirectional = false,
+    perspective = 35,
+    space = 'auto',
+    slideHeight = 1,
+    slideWidth = 1,
+    border = 1,
+    width = 360
+    // ..._props
+  } = props
 
   const goToSlide = useCallback<MouseEventHandler>((event) => {
-    // event.preventDefault()
-
     if (isActive) {
-      return onMainSlideClick(event, index)
+      return typeof props.onMainSlideClick === 'function' && props.onMainSlideClick(event, index)
     }
 
     if (clickable) {
-      goTo(index)
+      typeof props.goTo === 'function' && props.goTo(index)
     }
-  }, [index, isActive, clickable, goTo, onMainSlideClick])
+  }, [index, isActive, clickable, props])
 
   const calculatePosition = useCallback((i, positive, zIndex) => {
     const z = !disable3d ? inverseScaling + ((i + 1) * 100) : 0
