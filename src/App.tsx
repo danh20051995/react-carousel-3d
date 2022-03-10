@@ -4,7 +4,7 @@ import { Carousel3d } from '@/components/carousel-3d'
 import './App.scss'
 
 const App = () => {
-  const items = [
+  const [items] = useState([
     'https://img.favpng.com/10/6/13/number-0-computer-icons-blue-clip-art-png-favpng-Q69GyATD54wpx0Jdfw67Rrjyi_t.jpg',
     'https://media.baamboozle.com/uploads/images/140571/1602219863_6002',
     'https://gamedata.britishcouncil.org/sites/default/files/attachment/number-2_1.jpg',
@@ -15,11 +15,13 @@ const App = () => {
     'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Eo_circle_blue_number-7.svg/1200px-Eo_circle_blue_number-7.svg.png',
     'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Eo_circle_pink_white_number-8.svg/1200px-Eo_circle_pink_white_number-8.svg.png',
     'https://www.pngitem.com/pimgs/m/423-4233905_blue-number-9-clipart-number-9-blue-color.png'
-  ]
+  ].map(item => (<img src={item} alt="temp" />)))
 
   const [loop, setLoop] = useState(true)
   const [disable3d, setDisable3d] = useState(false)
+  const [reverse, setReverse] = useState(false)
   const [autoplay, setAutoplay] = useState(true)
+  const [autoplayTimeout, setAutoplayTimeout] = useState(1)
   const [autoplayHoverPause, setAutoplayHoverPause] = useState(true)
   const [controlsVisible, setControlsVisible] = useState(true)
   const [oneDirectional, setOneDirectional] = useState(false)
@@ -44,21 +46,21 @@ const App = () => {
       </header> */}
 
       <Carousel3d
-        loop={loop}
-        disable3d={disable3d}
         autoplay={autoplay}
+        autoplayTimeout={Math.max(autoplayTimeout, 1) * 500}
         autoplayHoverPause={autoplayHoverPause}
+        loop={loop}
+        reverse={reverse}
+        disable3d={disable3d}
+        clickable={clickable}
         controlsVisible={controlsVisible}
         oneDirectional={oneDirectional}
-        clickable={clickable}
+        items={items}
+        display={display}
+        startIndex={Math.floor(items.length / 2)}
         onLastSlide={(index) => console.log('onLastSlide', index)}
         onSlideChange={(index) => console.log('onSlideChange', index)}
         onMainSlideClick={(e, index) => console.log('onMainSlideClick', e, index)}
-        startIndex={Math.floor(items.length / 2)}
-        display={display}
-        items={items.map(item => (
-          <img src={item} alt="temp" />
-        ))}
       />
 
       <div className="carousel-options">
@@ -73,7 +75,19 @@ const App = () => {
           <label htmlFor="loop">loop</label>
         </div>
 
-        <br />
+        <hr />
+        <div>
+          <input
+            type="checkbox"
+            name="reverse"
+            id="reverse"
+            defaultChecked={reverse}
+            onChange={() => setReverse(!reverse)}
+          />
+          <label htmlFor="reverse">reverse</label>
+        </div>
+
+        <hr />
         <div>
           <input
             type="checkbox"
@@ -85,7 +99,7 @@ const App = () => {
           <label htmlFor="disable3d">disable3d</label>
         </div>
 
-        <br />
+        <hr />
         <div>
           <input
             type="checkbox"
@@ -97,7 +111,7 @@ const App = () => {
           <label htmlFor="autoplay">autoplay</label>
         </div>
 
-        <br />
+        <hr />
         <div>
           <input
             type="checkbox"
@@ -109,7 +123,19 @@ const App = () => {
           <label htmlFor="autoplayHoverPause">autoplayHoverPause</label>
         </div>
 
-        <br />
+        <hr />
+        <div>
+          <label htmlFor="autoplayTimeout">autoplayTimeout (x500ms): </label>
+          <input
+            type="number"
+            name="autoplayTimeout"
+            id="autoplayTimeout"
+            value={Math.max(Number(autoplayTimeout), 1)}
+            onChange={(e) => setAutoplayTimeout(parseInt(e.target.value))}
+          />
+        </div>
+
+        <hr />
         <div>
           <input
             type="checkbox"
@@ -121,7 +147,7 @@ const App = () => {
           <label htmlFor="controlsVisible">controlsVisible</label>
         </div>
 
-        <br />
+        <hr />
         <div>
           <input
             type="checkbox"
@@ -133,7 +159,7 @@ const App = () => {
           <label htmlFor="oneDirectional">oneDirectional</label>
         </div>
 
-        <br />
+        <hr />
         <div>
           <input
             type="checkbox"
@@ -145,7 +171,7 @@ const App = () => {
           <label htmlFor="clickable">clickable</label>
         </div>
 
-        <br />
+        <hr />
         <div>
           <label htmlFor="display">display: </label>
           <input
