@@ -5,17 +5,18 @@ import './App.scss'
 
 const App = () => {
   const [items] = useState([
-    'https://img.favpng.com/10/6/13/number-0-computer-icons-blue-clip-art-png-favpng-Q69GyATD54wpx0Jdfw67Rrjyi_t.jpg',
-    'https://media.baamboozle.com/uploads/images/140571/1602219863_6002',
-    'https://gamedata.britishcouncil.org/sites/default/files/attachment/number-2_1.jpg',
-    'https://www.pinclipart.com/picdir/middle/321-3212719_-numbers-1-10-math-numbers-name-letters.png',
-    'https://i.ytimg.com/vi/I6I2tBmMxMY/hqdefault.jpg',
-    'https://www.pngfind.com/pngs/m/121-1212576_numbers-numbers-1-10-letters-and-numbers.png',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Eo_circle_red_number-6.svg/2048px-Eo_circle_red_number-6.svg.png',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Eo_circle_blue_number-7.svg/1200px-Eo_circle_blue_number-7.svg.png',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Eo_circle_pink_white_number-8.svg/1200px-Eo_circle_pink_white_number-8.svg.png',
-    'https://www.pngitem.com/pimgs/m/423-4233905_blue-number-9-clipart-number-9-blue-color.png'
-  ].map(item => (<img src={item} alt="temp" />)))
+    '/static/images/0.png',
+    '/static/images/1.png',
+    '/static/images/2.png',
+    '/static/images/3.png',
+    '/static/images/4.png',
+    '/static/images/5.png',
+    '/static/images/6.png',
+    '/static/images/7.png',
+    '/static/images/8.png',
+    '/static/images/9.png',
+    '/static/images/10.png'
+  ])
 
   const [loop, setLoop] = useState(true)
   const [disable3d, setDisable3d] = useState(false)
