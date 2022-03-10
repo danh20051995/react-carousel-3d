@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Carousel3d } from '@/components/carousel-3d'
+import { Carousel3d, EDirection } from '@/components/carousel-3d'
 
 import './App.scss'
 
@@ -24,6 +24,7 @@ const App = () => {
   const [autoplay, setAutoplay] = useState(true)
   const [autoplayTimeout, setAutoplayTimeout] = useState(1)
   const [autoplayHoverPause, setAutoplayHoverPause] = useState(true)
+  const [autoplayDirection, setAutoplayDirection] = useState(EDirection.LTR)
   const [controlsVisible, setControlsVisible] = useState(true)
   const [oneDirectional, setOneDirectional] = useState(false)
   const [clickable, setClickable] = useState(true)
@@ -35,6 +36,7 @@ const App = () => {
         autoplay={autoplay}
         autoplayTimeout={Math.max(autoplayTimeout, 1) * 500}
         autoplayHoverPause={autoplayHoverPause}
+        autoplayDirection={autoplayDirection}
         loop={loop}
         reverse={reverse}
         disable3d={disable3d}
@@ -107,6 +109,31 @@ const App = () => {
             onChange={() => setAutoplayHoverPause(!autoplayHoverPause)}
           />
           <label htmlFor="autoplayHoverPause">autoplayHoverPause</label>
+        </div>
+
+        <hr />
+        <div>
+          <label>autoplayDirection</label>
+          <div>
+            <input
+              type="radio"
+              name="autoplayDirection"
+              id="ltr"
+              defaultChecked={autoplayDirection === EDirection.LTR}
+              onChange={(e) => e.target.checked && setAutoplayDirection(EDirection.LTR)}
+            />
+            <label htmlFor="ltr">left to right</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="autoplayDirection"
+              id="rlt"
+              defaultChecked={autoplayDirection === EDirection.RTL}
+              onChange={(e) => e.target.checked && setAutoplayDirection(EDirection.RTL)}
+            />
+            <label htmlFor="rlt">right to left</label>
+          </div>
         </div>
 
         <hr />

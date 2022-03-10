@@ -10,7 +10,7 @@ import './style.scss'
  */
 const calculateAspectRatio = (width: number, height: number) => Math.min(width / height)
 
-enum EDirection {
+export enum EDirection {
   LTR = 'ltr',
   RTL = 'rtl',
 }
@@ -26,6 +26,7 @@ export interface Carousel3dProps {
   autoplay?: boolean
   autoplayTimeout?: number
   autoplayHoverPause?: boolean
+  autoplayDirection?: EDirection,
 
   animationSpeed?: number
   bias?: EBias
@@ -59,6 +60,7 @@ export const Carousel3d: FC<Carousel3dProps> = (props) => {
     autoplay = false,
     autoplayTimeout = 2000,
     autoplayHoverPause = true,
+    autoplayDirection = EDirection.LTR,
 
     animationSpeed = 500,
     bias = 'left',
@@ -514,7 +516,9 @@ export const Carousel3d: FC<Carousel3dProps> = (props) => {
         clearTimeout(autoplayTimeOutRef.current)
       }
       autoplayTimeOutRef.current = setTimeout(
-        () => goNext(),
+        () => autoplayDirection === EDirection.LTR
+          ? goNext()
+          : goPrev(),
         autoplayTimeout
       )
     }
@@ -540,7 +544,7 @@ export const Carousel3d: FC<Carousel3dProps> = (props) => {
         ref.current.removeEventListener('mouseleave', startAutoplay)
       }
     }
-  }, [autoplay, autoplayHoverPause, autoplayTimeout, isNextPossible, goNext])
+  }, [autoplay, autoplayHoverPause, autoplayTimeout, isNextPossible, autoplayDirection, goNext, goPrev])
 
   const slideProps: SlideProps = {
     total: state.total,
