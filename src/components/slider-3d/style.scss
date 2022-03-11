@@ -1,4 +1,4 @@
-.carousel-3d-container {
+.slider-3d-container {
   box-sizing: border-box;
   margin: 20px auto;
   min-height: 1px;
@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 0;
 
-  .carousel-3d-slider {
+  .slider-3d-slider {
     -moz-perspective: 1000px;
     -webkit-perspective: 1000px;
     margin: 0 auto;

@@ -1,7 +1,8 @@
-import { useDidMountEffect } from '@/hooks/useDidMountEffect'
 import { FC, MouseEvent as RMouseEvent, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import clsx from 'clsx'
 import { Controls } from './controls'
 import { Slide, SlideProps } from './slide'
+import { useDidMountEffect } from '../../hooks/useDidMountEffect'
 
 import './style.scss'
 
@@ -20,7 +21,7 @@ export enum EBias {
   RIGHT = 'right',
 }
 
-export interface Carousel3dProps {
+export interface Slider3DProps {
   items: string[] | ReactNode[]
   className?: string | string[] | { [className: string]: boolean }
   autoplay?: boolean
@@ -55,7 +56,7 @@ export interface Carousel3dProps {
   onSlideChange?: (index: number) => any
 }
 
-export const Carousel3d: FC<Carousel3dProps> = (props) => {
+export const Slider3D: FC<Slider3DProps> = (props) => {
   const {
     autoplay = false,
     autoplayTimeout = 2000,
@@ -570,8 +571,8 @@ export const Carousel3d: FC<Carousel3dProps> = (props) => {
   }
 
   return (
-    <div ref={ref} className="carousel-3d-container" style={{ height: slideHeight + 'px' }}>
-      <div className="carousel-3d-slider" style={{ width: slideWidth + 'px', height: slideHeight + 'px' }}>
+    <div ref={ref} className={clsx('slider-3d-container', props.className)} style={{ height: slideHeight + 'px' }}>
+      <div className="slider-3d-slider" style={{ width: slideWidth + 'px', height: slideHeight + 'px' }}>
         {props.items.map((item, index) => (
           <Slide
             {...slideProps}

@@ -169,7 +169,7 @@ export const Slide: FC<SlideProps> = (props) => {
 
   return (
     <div
-      className={clsx('carousel-3d-slide', computedClasses)}
+      className={clsx('slider-3d-slide', computedClasses)}
       style={slideStyle}
       onClick={goToSlide}
     >

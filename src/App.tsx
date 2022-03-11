@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Carousel3d, EDirection } from '@/components/carousel-3d'
+import { Slider3D, EDirection } from '@/components/slider-3d'
 
 import './App.scss'
 
@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Carousel3d
+      <Slider3D
         autoplay={autoplay}
         autoplayTimeout={Math.max(autoplayTimeout, 1) * 500}
         autoplayHoverPause={autoplayHoverPause}

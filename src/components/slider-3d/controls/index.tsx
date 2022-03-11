@@ -31,7 +31,7 @@ export const Controls: FC<ControlsProps> = ({
   }), [height, width])
 
   return (
-    <div className="carousel-3d-controls">
+    <div className="slider-3d-controls">
       <a
         aria-label="Previous slide"
         className={clsx({ prev: true, disabled: !isPrevPossible })}
