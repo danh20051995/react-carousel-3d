@@ -7,7 +7,7 @@ import { useDidMountEffect } from '../../hooks/useDidMountEffect'
 /**
  * Calculate slide with and keep defined aspect ratio
  */
-const calculateAspectRatio = (width: number, height: number) => Math.min(width / height)
+const calculateAspectRatio = (width: number, height: number) => width / height
 
 export enum EDirection {
   LTR = 'ltr',
@@ -601,6 +601,6 @@ export const Slider3D: FC<Slider3DProps> = (props) => {
           goPrev={goPrev}
         />
       )}
-    </div >
+    </div>
   )
 }

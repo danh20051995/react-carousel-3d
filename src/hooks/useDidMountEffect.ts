@@ -4,7 +4,7 @@ import { EffectCallback, useEffect, useRef, DependencyList } from 'react'
  * @param {() => any} callback
  * @param {ReadonlyArray<any>} deps React DependencyList
  */
-export const useDidMountEffect = (callback: EffectCallback, deps: DependencyList) => {
+export const useDidMountEffect = (callback: EffectCallback, deps?: DependencyList) => {
   const didMount = useRef(false)
 
   useEffect(() => {
