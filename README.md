@@ -17,19 +17,31 @@ npm install --save react-slider-3d
 Include the `react-slider-3d` into your component using import/require:
 
 ```js
-// ES6 | Both are the same
+// both are the same
 import Slider3D from 'react-slider-3d';
 import { Slider3D } from 'react-slider-3d';
 
-// CommonJS
-const Slider3D = require('react-slider-3d');
+// import css files
+import 'react-slider-3d/dist/css/style.min.css';
 ```
 
 ## Usage
 
 View the [Demo](https://react-slider-3d.vercel.app) and its
-[source](/src/App.tsx) for more.
+[source](https://github.com/danh20051995/react-slider-3d/blob/main/src/App.tsx) for more.
+
+## Development
+
+Want to run demo locally
+
+```bash
+git clone https://github.com/danh20051995/react-slider-3d
+cd react-slider-3d
+npm install
+npm run start
+open http://localhost:3000
+```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/danh20051995/react-slider-3d/blob/main/LICENSE.md) file for details.
