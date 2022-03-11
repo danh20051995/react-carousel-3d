@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Slider3D, EDirection } from '@/components/slider-3d'
+import '@/components/slider-3d/style.scss'
 
 import './App.scss'
 

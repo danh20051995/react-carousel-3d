@@ -1,6 +1,5 @@
 import { FC, MouseEventHandler, ReactNode, useMemo } from 'react'
 import clsx from 'clsx'
-import './style.scss'
 
 export interface ControlsProps {
   className?: string | string[] | { [className: string]: boolean }

@@ -1,8 +1,6 @@
 import clsx from 'clsx'
 import { FC, MouseEvent as RMouseEvent, MouseEventHandler, ReactNode, useCallback, useMemo, useState } from 'react'
 
-import './style.scss'
-
 export interface SlideProps {
   className?: string | string[] | { [className: string]: boolean }
   children?: ReactNode

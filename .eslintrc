@@ -25,6 +25,7 @@
     "react/function-component-definition": 0,
     "react/self-closing-comp": 0,
     "react/jsx-props-no-spreading": 0,
+    "react-hooks/exhaustive-deps": "off",
     "jsx-a11y/anchor-is-valid": 0,
     "curly": ["error", "all"],
     "react/button-has-type": 0,

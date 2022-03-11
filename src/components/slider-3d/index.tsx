@@ -4,8 +4,6 @@ import { Controls } from './controls'
 import { Slide, SlideProps } from './slide'
 import { useDidMountEffect } from '../../hooks/useDidMountEffect'
 
-import './style.scss'
-
 /**
  * Calculate slide with and keep defined aspect ratio
  */
@@ -433,28 +431,29 @@ export const Slider3D: FC<Slider3DProps> = (props) => {
 
     // this.attachMutationObserver()
 
+    const refCurrent = ref.current
     if ('ontouchstart' in window) {
-      ref.current.addEventListener('touchstart', handleMousedown)
-      ref.current.addEventListener('touchend', handleMouseup)
-      ref.current.addEventListener('touchmove', handleMousemove)
+      refCurrent.addEventListener('touchstart', handleMousedown)
+      refCurrent.addEventListener('touchend', handleMouseup)
+      refCurrent.addEventListener('touchmove', handleMousemove)
     } else {
-      ref.current.addEventListener('mousedown', handleMousedown)
-      ref.current.addEventListener('mouseup', handleMouseup)
-      ref.current.addEventListener('mousemove', handleMousemove)
+      refCurrent.addEventListener('mousedown', handleMousedown)
+      refCurrent.addEventListener('mouseup', handleMouseup)
+      refCurrent.addEventListener('mousemove', handleMousemove)
     }
 
     return () => {
-      if (!ref.current) {
+      if (!refCurrent) {
         return
       }
       if ('ontouchstart' in window) {
-        ref.current.removeEventListener('touchstart', handleMousedown)
-        ref.current.removeEventListener('touchend', handleMouseup)
-        ref.current.removeEventListener('touchmove', handleMousemove)
+        refCurrent.removeEventListener('touchstart', handleMousedown)
+        refCurrent.removeEventListener('touchend', handleMouseup)
+        refCurrent.removeEventListener('touchmove', handleMousemove)
       } else {
-        ref.current.removeEventListener('mousedown', handleMousedown)
-        ref.current.removeEventListener('mouseup', handleMouseup)
-        ref.current.removeEventListener('mousemove', handleMousemove)
+        refCurrent.removeEventListener('mousedown', handleMousedown)
+        refCurrent.removeEventListener('mouseup', handleMouseup)
+        refCurrent.removeEventListener('mousemove', handleMousemove)
       }
     }
   }, [state.mousedown, state.dragStartX, state.dragStartY, minSwipeDistance, goNext, goPrev])
@@ -531,18 +530,19 @@ export const Slider3D: FC<Slider3DProps> = (props) => {
       }
     }
 
-    if (autoplayHoverPause && ref.current) {
-      ref.current.addEventListener('mouseenter', pauseAutoplay)
-      ref.current.addEventListener('mouseleave', startAutoplay)
+    const refCurrent = ref.current
+    if (autoplayHoverPause && refCurrent) {
+      refCurrent.addEventListener('mouseenter', pauseAutoplay)
+      refCurrent.addEventListener('mouseleave', startAutoplay)
     }
 
     startAutoplay()
     return () => {
       pauseAutoplay()
 
-      if (autoplayHoverPause && ref.current) {
-        ref.current.removeEventListener('mouseenter', pauseAutoplay)
-        ref.current.removeEventListener('mouseleave', startAutoplay)
+      if (autoplayHoverPause && refCurrent) {
+        refCurrent.removeEventListener('mouseenter', pauseAutoplay)
+        refCurrent.removeEventListener('mouseleave', startAutoplay)
       }
     }
   }, [autoplay, autoplayHoverPause, autoplayTimeout, isNextPossible, autoplayDirection, goNext, goPrev])
