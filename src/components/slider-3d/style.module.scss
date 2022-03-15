@@ -1,4 +1,4 @@
-.slider-3d-container {
+.slider3dContainer {
   box-sizing: border-box;
   margin: 20px auto;
   min-height: 1px;
@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 0;
 
-  .slider-3d-slider {
+  .slider3dSlider {
     -moz-perspective: 1000px;
     -webkit-perspective: 1000px;
     margin: 0 auto;
@@ -16,6 +16,3 @@
     transform-style: preserve-3d;
   }
 }
-
-@import './controls/style.scss';
-@import './slide/style.scss';

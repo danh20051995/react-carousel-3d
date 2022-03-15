@@ -17,12 +17,7 @@ npm install --save react-slider-3d
 Include the `react-slider-3d` into your component using import:
 
 ```js
-// both are the same
-import Slider3D from 'react-slider-3d';
 import { Slider3D } from 'react-slider-3d';
-
-// import css file
-import 'react-slider-3d/dist/css/style.min.css';
 ```
 
 ## Usage

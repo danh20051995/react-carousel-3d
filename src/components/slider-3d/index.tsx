@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { Controls } from './controls'
 import { Slide, SlideProps } from './slide'
 import { useDidMountEffect } from '../../hooks/useDidMountEffect'
+import Style from './style.module.scss'
 
 /**
  * Calculate slide with and keep defined aspect ratio
@@ -575,8 +576,8 @@ export const Slider3D: FC<Slider3DProps> = (props) => {
   }
 
   return (
-    <div ref={ref} className={clsx('slider-3d-container', props.className)} style={{ height: slideHeight + 'px' }}>
-      <div className="slider-3d-slider" style={{ width: slideWidth + 'px', height: slideHeight + 'px' }}>
+    <div ref={ref} className={clsx(Style.slider3dContainer, props.className)} style={{ height: slideHeight + 'px' }}>
+      <div className={Style.slider3dSlider} style={{ width: slideWidth + 'px', height: slideHeight + 'px' }}>
         {props.items.map((item, index) => (
           <Slide
             {...slideProps}

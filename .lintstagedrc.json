@@ -1,5 +1,0 @@
-{
-  "!(config|build|dist|public|scripts)*.+(js|jsx|ts)": [
-    "npm run lint"
-  ]
-}
