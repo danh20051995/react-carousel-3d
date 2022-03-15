@@ -58,30 +58,31 @@ export const Slider3D: FC<Slider3DProps> = (props) => {
   const {
     autoplay = false,
     autoplayTimeout = 2000,
-    autoplayHoverPause = true,
+    autoplayHoverPause = false,
     autoplayDirection = EDirection.LTR,
 
-    animationSpeed = 500,
-    bias = 'left',
-    border = 1,
-    clickable = true,
     controlsHeight = 50,
     controlsNextHtml = '&rsaquo;',
     controlsPrevHtml = '&lsaquo;',
     controlsVisible = false,
     controlsWidth = 50,
-    reverse = false,
+
+    animationSpeed = 500,
+    bias = EBias.LEFT,
+    clickable = false,
     disable3d = false,
-    display = 5,
-    height = 270,
-    inverseScaling = 300,
-    loop = false,
-    minSwipeDistance = 10,
-    oneDirectional = false,
-    perspective = 35,
-    space = 'auto',
+    reverse = false,
     startIndex = 0,
-    width = 360
+    minSwipeDistance = 10,
+    loop = false,
+    oneDirectional = false,
+    display = 5,
+    border = 1,
+    width = 360,
+    height = 270,
+    space = 'auto',
+    perspective = 35,
+    inverseScaling = 300
     // ..._props
   } = props
 
