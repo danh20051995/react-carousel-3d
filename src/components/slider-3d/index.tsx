@@ -22,36 +22,39 @@ export enum EBias {
 export interface Slider3DProps {
   items: string[] | ReactNode[]
   className?: string | string[] | { [className: string]: boolean }
+
   autoplay?: boolean
   autoplayTimeout?: number
   autoplayHoverPause?: boolean
   autoplayDirection?: EDirection,
 
-  animationSpeed?: number
-  bias?: EBias
-  loop?: boolean
-  reverse?: boolean
-  clickable?: boolean
-  disable3d?: boolean
-  oneDirectional?: boolean
   controlsHeight?: number
   controlsNextHtml?: string
   controlsPrevHtml?: string
   controlsVisible?: boolean
   controlsWidth?: number
+
+  animationSpeed?: number
+  bias?: EBias
+  clickable?: boolean
+  disable3d?: boolean
+  loop?: boolean
+  oneDirectional?: boolean
+  reverse?: boolean
+  startIndex?: number
+  minSwipeDistance?: number
   display?: number
-  space?: number | string
   border?: number
   width?: number
   height?: number
-  startIndex?: number
+  space?: number | string
   perspective?: number
   inverseScaling?: number
-  minSwipeDistance?: number
+
   onLastSlide?: (index: number) => any
-  onMainSlideClick?: (event: RMouseEvent<Element, MouseEvent>, index: number) => any
   onBeforeSlideChange?: (index: number) => any
   onSlideChange?: (index: number) => any
+  onMainSlideClick?: (event: RMouseEvent<Element, MouseEvent>, index: number) => any
 }
 
 export const Slider3D: FC<Slider3DProps> = (props) => {
@@ -71,11 +74,11 @@ export const Slider3D: FC<Slider3DProps> = (props) => {
     bias = EBias.LEFT,
     clickable = false,
     disable3d = false,
+    loop = false,
+    oneDirectional = false,
     reverse = false,
     startIndex = 0,
     minSwipeDistance = 10,
-    loop = false,
-    oneDirectional = false,
     display = 5,
     border = 1,
     width = 360,
