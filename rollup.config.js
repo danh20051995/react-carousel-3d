@@ -20,9 +20,14 @@ export default [
         sourcemap: false,
       },
     ],
+    external: [
+      ...Object.keys(packageJson.dependencies || {}),
+      ...Object.keys(packageJson.peerDependencies || {}),
+    ].filter(Boolean),
     plugins: [
       postcss({
         minimize: true,
+        modules: true,
       }),
       commonjs(),
       resolve(),
