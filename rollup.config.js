@@ -21,11 +21,13 @@ export default [
       },
     ],
     plugins: [
-      postcss(),
+      postcss({
+        minimize: true,
+      }),
       commonjs(),
       resolve(),
       typescript({
-        tsconfig: './tsconfig.build.json'
+        tsconfig: './tsconfig.build.json',
       }),
     ],
   },

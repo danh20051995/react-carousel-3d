@@ -1,35 +1,34 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "esModuleInterop": true,
+    // Default
+    "target": "es5", 
+    "esModuleInterop": true, 
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "strict": true, 
     "skipLibCheck": true,
-    "module": "ESNext",
+
+    // Added
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "emitDeclarationOnly": true,
+    "module": "ESNext",  
+    "moduleResolution": "node",
     "declaration": true,
     "declarationDir": ".",
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "emitDeclarationOnly": true,
-    "jsx": "react-jsx",
+    "sourceMap": false,
     "outDir": "dist",
+
+    // paths config
     "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
       ]
     },
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ]
   },
   "include": [
     "index.ts",
-    "types",
-    "src/hooks",
-    "src/components"
+    "src/**/*.d.ts"
   ],
   "exclude": [
     "node_modules",
