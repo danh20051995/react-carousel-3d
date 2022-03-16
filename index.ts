@@ -1,5 +1,5 @@
-export * from '@/components/slider-3d'
-export * from '@/components/slider-3d/slide'
-export * from '@/components/slider-3d/controls'
+export * from './src/components/slider-3d'
+export * from './src/components/slider-3d/slide'
+export * from './src/components/slider-3d/controls'
 
-export * from '@/components/demo'
+export * from './src/components/demo'

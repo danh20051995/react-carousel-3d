@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { FC, MouseEvent as RMouseEvent, MouseEventHandler, ReactNode, useCallback, useMemo, useState } from 'react'
-import Style from './style.module.scss'
+import Styles from './s.m.scss'
 
 export interface SlideProps {
   className?: string | string[] | { [className: string]: boolean }
@@ -163,12 +163,12 @@ export const Slide: FC<SlideProps> = (props) => {
   const computedClasses = useMemo(() => ({
     [`left-${leftIndex + 1}`]: leftIndex >= 0,
     [`right-${rightIndex + 1}`]: rightIndex >= 0,
-    [Style.current]: isActive
+    [Styles.current]: isActive
   }), [isActive, leftIndex, rightIndex])
 
   return (
     <div
-      className={clsx(Style.slider3dSlide, computedClasses)}
+      className={clsx(Styles.slider3dSlide, computedClasses)}
       style={slideStyle}
       onClick={goToSlide}
     >

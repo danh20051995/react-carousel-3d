@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import Style from './style.module.scss'
+import Styles from './s.m.scss'
 
 export const DemoComp: FC = props => (
-  <div className={Style.className}>
+  <div className={Styles.className}>
     {props.children}
   </div>
 )
