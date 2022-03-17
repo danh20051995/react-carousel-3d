@@ -12,12 +12,12 @@ const calculateAspectRatio = (width: number, height: number) => width / height
 
 export enum EDirection {
   LTR = 'ltr',
-  RTL = 'rtl',
+  RTL = 'rtl'
 }
 
 export enum EBias {
   LEFT = 'left',
-  RIGHT = 'right',
+  RIGHT = 'right'
 }
 
 export interface Slider3DProps {
@@ -27,7 +27,7 @@ export interface Slider3DProps {
   autoplay?: boolean
   autoplayTimeout?: number
   autoplayHoverPause?: boolean
-  autoplayDirection?: EDirection,
+  autoplayDirection?: EDirection
 
   controlsHeight?: number
   controlsNextHtml?: string
