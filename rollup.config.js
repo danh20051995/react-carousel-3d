@@ -1,3 +1,4 @@
+import * as path from 'path'
 import postcss from 'rollup-plugin-postcss'
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
@@ -20,10 +21,12 @@ export default [
         sourcemap: false,
       },
     ],
-    external: [
-      ...Object.keys(packageJson.dependencies || {}),
-      ...Object.keys(packageJson.peerDependencies || {}),
-    ].filter(Boolean),
+    // external: [
+    //   ...Object.keys(packageJson.dependencies || {}),
+    //   ...Object.keys(packageJson.peerDependencies || {}),
+    // ].filter(Boolean),
+    // external: [/node_modules/],
+    external: [new RegExp(path.join(process.cwd(), 'node_modules'))],
     plugins: [
       postcss({
         minimize: true,
