@@ -22,7 +22,7 @@ import { Slider3D } from 'react-slider-3d';
 
 ## Usage
 
-View the [Demo](https://react-slider-3d.vercel.app) and its
+View the [Demo](https://react-slider-3d.danhle.dev) and its
 [source](https://github.com/danh20051995/react-slider-3d/blob/main/src/App.tsx) for more.
 
 ## Development
