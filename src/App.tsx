@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Slider3D, EDirection } from '@/components/slider-3d'
-
-import './App.scss'
+import Style from './style.module.scss'
 
 const App = () => {
   const [items] = useState([
@@ -31,7 +30,7 @@ const App = () => {
   const [display, setDisplay] = useState(items.length)
 
   return (
-    <div className="App">
+    <div className={Style.app}>
       <Slider3D
         autoplay={autoplay}
         autoplayTimeout={Math.max(autoplayTimeout, 1) * 500}
@@ -51,7 +50,7 @@ const App = () => {
         onMainSlideClick={(e, index) => console.log('onMainSlideClick', e, index)}
       />
 
-      <div className="carousel-options">
+      <div className={Style.carouselOptions}>
         <div>
           <input
             type="checkbox"

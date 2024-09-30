@@ -1,6 +1,6 @@
 import { FC, MouseEventHandler, ReactNode, useMemo } from 'react'
 import clsx from 'clsx'
-import Styles from './s.m.scss'
+import Style from './style.module.scss'
 
 export interface ControlsProps {
   className?: string | string[] | { [className: string]: boolean }
@@ -31,10 +31,10 @@ export const Controls: FC<ControlsProps> = ({
   }), [height, width])
 
   return (
-    <div className={Styles.slider3dControls}>
+    <div className={Style.slider3dControls}>
       <a
         aria-label="Previous slide"
-        className={clsx(Styles.prev, { [Styles.disabled]: !isPrevPossible })}
+        className={clsx(Style.prev, { [Style.disabled]: !isPrevPossible })}
         href="#"
         onClick={props.goPrev}
         style={styles}
@@ -44,7 +44,7 @@ export const Controls: FC<ControlsProps> = ({
 
       <a
         aria-label="Next slide"
-        className={clsx(Styles.next, { [Styles.disabled]: !isNextPossible })}
+        className={clsx(Style.next, { [Style.disabled]: !isNextPossible })}
         href="#"
         onClick={props.goNext}
         style={styles}

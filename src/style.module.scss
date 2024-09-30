@@ -1,4 +1,4 @@
-.App {
+.app {
   text-align: center;
 
   -webkit-touch-callout: none; /* iOS Safari */
@@ -8,9 +8,9 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
 
-  .carousel-options {
-    display: inline-block;
-    text-align: left;
-  }
+.carouselOptions {
+  display: inline-block;
+  text-align: left;
 }
