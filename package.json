@@ -1,6 +1,6 @@
 {
   "name": "react-slider-3d",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Beautiful, flexible and touch supported 3D for React.",
   "author": {
     "name": "Danh Le",
@@ -49,8 +49,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --max-warnings 0 --fix",
     "clean": "rimraf dist/",
     "build:dist": "npm run clean&&rollup -c",
-    "postversion": "npm run build:dist&&npm publish",
-    "postpublish": "git add .&&git commit -m \"release\"&&git push"
+    "release": "npm run build:dist&&npm publish"
   },
   "dependencies": {
     "clsx": "^1.1.1"
